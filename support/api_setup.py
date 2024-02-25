@@ -37,6 +37,7 @@ class ApiSetUp:
             print("POST Response:", response.text)
         else:
             print(f"Error making POST request: {response.status_code}")
+            raise
 
     @staticmethod
     def send_delete_request(api_path, access_token):
@@ -53,3 +54,4 @@ class ApiSetUp:
             print("DELETE Response:", response.text)
         else:
             print(f"Error making DELETE request: {response.status_code}")
+            raise

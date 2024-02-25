@@ -8,7 +8,10 @@ def test_fast_home_page(driver):
     home_page = HomePage(driver)
     test_data = TestData()
 
-    # Create test data before test
+    # Create test data before test via DB
+    test_data.create_test_element_via_db()
+
+    # Create test data before test via API
     test_data.create_test_group_and_item_data()
 
     login_page.perform_login_operation()

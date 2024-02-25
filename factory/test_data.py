@@ -1,10 +1,20 @@
 from support.api_setup import ApiSetUp
+from support.db_executor import DatabaseExecutor
+
 
 # Get access token
 access_token = ApiSetUp.get_access_token()
 
 
-class TestData(ApiSetUp):
+class TestData(ApiSetUp, DatabaseExecutor):
+
+    @staticmethod
+    def create_test_element_via_db():
+        DatabaseExecutor.execute_query(
+            "Insert Into [test_table]"
+            "(externalId, name, type)"
+            "values ('test_id', 'test_name', 'test_type')"
+        )
 
     @staticmethod
     def create_test_group_and_item_data():
